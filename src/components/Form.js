@@ -16,7 +16,7 @@ class Form extends React.Component {
 
   handleChange = (event) => {
     this.setState({
-      [event.target.name]: event.target.value,
+      [event.target.id]: event.target.value,
     });
   };
 
@@ -86,6 +86,14 @@ class Form extends React.Component {
           />
           <Input
             handleChange={this.handleChange}
+            name={"size"}
+            placeholder={"Size of Animal"}
+            type={"text"}
+            value={this.state.size}
+            id={"size"}
+          />
+          <Input
+            handleChange={this.handleChange}
             name={"location"}
             placeholder={"Location for Animal"}
             type={"text"}
@@ -124,14 +132,7 @@ class Form extends React.Component {
             value={this.state.email}
             id={"email"}
           />
-          <Input
-            handleChange={this.handleChange}
-            name={"size"}
-            placeholder={"Size of Animal"}
-            type={"text"}
-            value={this.state.size}
-            id={"size"}
-          />
+
           <input type="submit" value="Add a New Pet" />
         </form>
       </div>

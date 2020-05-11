@@ -15,6 +15,7 @@ class Pet extends React.Component {
           <p>
             If intrested call {pet.phone} or email {pet.email}
           </p>
+          <button onClick={() => handleDelete(pet)}>X</button>
         </div>
       </>
     );

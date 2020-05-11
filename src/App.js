@@ -42,6 +42,37 @@ class App extends React.Component {
       .catch((error) => console.log(error));
   };
 
+  handleDelete = (deletePet) => {
+    fetch(`/pets/${deletePet.id}`, {
+      method: "DELETE",
+      headers: {
+        Accept: "application/json, text/plain, */*",
+        "Content-Type": "application/json",
+      },
+    })
+      .then((json) => {
+        const pets = this.state.pets.filter((pet) => pet.id !== deletePet.id);
+        this.setState({ pets });
+      })
+      .catch((error) => console.log(error));
+  };
+
+  handleUpdate = (event, formInputs) => {
+    event.preventDefault();
+    fetch(`/pets/${formInputs.id}`, {
+      body: JSON.stringify(formInputs),
+      method: "PUT",
+      headers: {
+        Accept: "application/json, text/plain, */*",
+        "Content-Type": "application/json",
+      },
+    })
+      .then((updatePets) => {
+        this.getPets();
+      })
+      .catch((error) => console.log(error));
+  };
+
   render() {
     console.log(this.state);
     return (
@@ -49,7 +80,11 @@ class App extends React.Component {
         <div className="container">
           <h1>Adopt A Pet</h1>
           <Form handleSubmit={this.handleAdd} />
-          <Main pets={this.state.pets} />
+          <Main
+            pets={this.state.pets}
+            handleDelete={this.handleDelete}
+            handleUpdate={this.handleUpdate}
+          />
         </div>
       </div>
     );
