@@ -22,7 +22,7 @@ class Form extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    this.props.handleSubmit(event, {
+    const pet = {
       animal: this.state.animal,
       location: this.state.location,
       breed: this.state.breed,
@@ -32,32 +32,23 @@ class Form extends React.Component {
       size: this.state.size,
       email: this.state.email,
       pic: this.state.pic,
-    });
+    };
+    if (this.props.pet) pet.id = this.props.pet.id;
+    this.props.handleSubmit(event, pet);
   };
 
   componentWillMount() {
     if (this.props.notice) {
-      const {
-        animal,
-        location,
-        breed,
-        age,
-        phone,
-        email,
-        gender,
-        size,
-        pic,
-      } = this.props.notice;
       this.setState({
-        animal: animal || "",
-        location: location || "",
-        breed: breed || "",
-        age: age || "",
-        phone: phone || "",
-        email: email || "",
-        gender: gender || "",
-        size: size || "",
-        pic: pic || "",
+        animal: this.props.animal || "",
+        location: this.props.location || "",
+        breed: this.props.breed || "",
+        age: this.props.age || "",
+        phone: this.props.phone || "",
+        email: this.props.email || "",
+        gender: this.props.gender || "",
+        size: this.props.size || "",
+        pic: this.props.pic || "",
       });
     }
   }
@@ -66,7 +57,6 @@ class Form extends React.Component {
     console.log(this.state);
     return (
       <div>
-        <h1>New Pet</h1>
         <form onSubmit={this.handleSubmit}>
           <Input
             handleChange={this.handleChange}
@@ -133,7 +123,14 @@ class Form extends React.Component {
             id={"email"}
           />
 
-          <input type="submit" value="Add a New Pet" />
+          {this.props.pet ? (
+            <button onClick={this.props.toggleForm}>close</button>
+          ) : null}
+
+          <input
+            type="submit"
+            value={this.props.pet ? "Update this Pet" : "Add a Pet"}
+          />
         </form>
       </div>
     );

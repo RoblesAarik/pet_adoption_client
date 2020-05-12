@@ -4,7 +4,7 @@ import Pet from "./Pet.js";
 function Pets(props) {
   const { pets, handleDelete, handleUpdate } = props;
   return (
-    <div>
+    <div className="pets">
       {pets.map((pet) => (
         <Pet
           key={pet.id}
