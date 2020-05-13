@@ -5,6 +5,8 @@ import Main from "./components/Main";
 import Nav from "./components/Nav";
 import Modal from "./components/Modal";
 
+const BASE_URL = REACT_APP_BACKEND;
+
 class App extends React.Component {
   state = {
     pets: [],
@@ -16,7 +18,7 @@ class App extends React.Component {
   }
 
   getPets() {
-    fetch("https://pet-adoption-api-aarik.herokuapp.com/pets")
+    fetch(`${BASE_URL}/pets`)
       .then((reponse) => reponse.json())
       .then((json) => this.setState({ pets: json }))
       .catch((error) => console.log(error));
@@ -24,7 +26,7 @@ class App extends React.Component {
 
   handleAdd = (event, formInputs) => {
     event.preventDefault();
-    fetch("https://pet-adoption-api-aarik.herokuapp.com/pets", {
+    fetch(`${BASE_URL}/pets`, {
       body: JSON.stringify(formInputs),
       method: "POST",
       headers: {
@@ -42,7 +44,7 @@ class App extends React.Component {
   };
 
   handleDelete = (deletePet) => {
-    fetch(`https://pet-adoption-api-aarik.herokuapp.com/pets/${deletePet.id}`, {
+    fetch(`${BASE_URL}/pets/${deletePet.id}`, {
       method: "DELETE",
       headers: {
         Accept: "application/json, text/plain, */*",
@@ -58,17 +60,14 @@ class App extends React.Component {
 
   handleUpdate = (event, formInputs) => {
     event.preventDefault();
-    fetch(
-      `https://pet-adoption-api-aarik.herokuapp.com/pets/${formInputs.id}`,
-      {
-        body: JSON.stringify(formInputs),
-        method: "PUT",
-        headers: {
-          Accept: "application/json, text/plain, */*",
-          "Content-Type": "application/json",
-        },
-      }
-    )
+    fetch(`${BASE_URL}/pets/${formInputs.id}`, {
+      body: JSON.stringify(formInputs),
+      method: "PUT",
+      headers: {
+        Accept: "application/json, text/plain, */*",
+        "Content-Type": "application/json",
+      },
+    })
       .then((updatedPet) => {
         // be naughty
         this.getPets();
