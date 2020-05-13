@@ -61,7 +61,7 @@ class Form extends React.Component {
           <Input
             handleChange={this.handleChange}
             name={"animal"}
-            placeholder={"Animal for Adoption"}
+            placeholder={"Name of Pet"}
             type={"text"}
             value={this.state.animal}
             id={"animal"}

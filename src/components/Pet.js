@@ -32,7 +32,7 @@ class Pet extends React.Component {
             <p>
               If intrested call {pet.phone} or email {pet.email}
             </p>
-            <button onClick={() => handleDelete(pet)}>X</button>
+            <button onClick={() => handleDelete(pet)}>Pet Adopted</button>
             <button onClick={this.toggleForm}>Edit Pet</button>
           </div>
         )}

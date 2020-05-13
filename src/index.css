@@ -1,8 +1,6 @@
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  margin: 0 auto;
+  font-family: "Roboto Mono", monospace;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -41,7 +39,7 @@ form {
   background: #eee;
   padding: 0.1em;
   margin: 0 auto;
-
+  width: 75%;
   border-radius: 25px;
 }
 
@@ -63,12 +61,12 @@ input {
   text-align: center;
   width: 500px;
   margin: 0 auto;
-  margin: 7px;
+  margin-bottom: 7px;
+  margin-top: 7px;
 }
 
 nav {
   background-color: #00a8de;
-  height: 30px;
   color: white;
 }
 
@@ -84,6 +82,10 @@ nav li {
   font-size: 20px;
 }
 
+nav li:hover {
+  color: rgba(0, 0, 0, 0.3);
+}
+
 main {
   display: flex;
   flex-wrap: wrap;
@@ -93,8 +95,10 @@ main {
 .petInfo {
   border: 1px solid black;
   border-radius: 10px;
-  margin: 25px;
+  margin: 0 auto;
   box-shadow: 5px 10px 8px gray;
+  width: 75%;
+  margin-bottom: 30px;
 }
 
 .petInfo > button {
