@@ -16,7 +16,7 @@ class App extends React.Component {
   }
 
   getPets() {
-    fetch("/pets")
+    fetch("https://pet-adoption-api-aarik.herokuapp.com/pets")
       .then((reponse) => reponse.json())
       .then((json) => this.setState({ pets: json }))
       .catch((error) => console.log(error));
@@ -24,7 +24,7 @@ class App extends React.Component {
 
   handleAdd = (event, formInputs) => {
     event.preventDefault();
-    fetch("/pets", {
+    fetch("https://pet-adoption-api-aarik.herokuapp.com/pets", {
       body: JSON.stringify(formInputs),
       method: "POST",
       headers: {
@@ -42,7 +42,7 @@ class App extends React.Component {
   };
 
   handleDelete = (deletePet) => {
-    fetch(`/pets/${deletePet.id}`, {
+    fetch(`https://pet-adoption-api-aarik.herokuapp.com/pets/${deletePet.id}`, {
       method: "DELETE",
       headers: {
         Accept: "application/json, text/plain, */*",
@@ -58,14 +58,17 @@ class App extends React.Component {
 
   handleUpdate = (event, formInputs) => {
     event.preventDefault();
-    fetch(`/pets/${formInputs.id}`, {
-      body: JSON.stringify(formInputs),
-      method: "PUT",
-      headers: {
-        Accept: "application/json, text/plain, */*",
-        "Content-Type": "application/json",
-      },
-    })
+    fetch(
+      `https://pet-adoption-api-aarik.herokuapp.com/pets/${formInputs.id}`,
+      {
+        body: JSON.stringify(formInputs),
+        method: "PUT",
+        headers: {
+          Accept: "application/json, text/plain, */*",
+          "Content-Type": "application/json",
+        },
+      }
+    )
       .then((updatedPet) => {
         // be naughty
         this.getPets();
