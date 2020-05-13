@@ -5,7 +5,7 @@ import Main from "./components/Main";
 import Nav from "./components/Nav";
 import Modal from "./components/Modal";
 
-const BASE_URL = process.env.REACT_APP_BACKEND;
+const baseURL = process.env.REACT_APP_BACKEND;
 
 class App extends React.Component {
   state = {
@@ -18,7 +18,7 @@ class App extends React.Component {
   }
 
   getPets() {
-    fetch(`${BASE_URL}/pets`)
+    fetch(`${baseURL}/pets`)
       .then((reponse) => reponse.json())
       .then((json) => this.setState({ pets: json }))
       .catch((error) => console.log(error));
@@ -26,7 +26,7 @@ class App extends React.Component {
 
   handleAdd = (event, formInputs) => {
     event.preventDefault();
-    fetch(`${BASE_URL}/pets`, {
+    fetch(`${baseURL}/pets`, {
       body: JSON.stringify(formInputs),
       method: "POST",
       headers: {
@@ -44,7 +44,7 @@ class App extends React.Component {
   };
 
   handleDelete = (deletePet) => {
-    fetch(`${BASE_URL}/pets/${deletePet.id}`, {
+    fetch(`${baseURL}/pets/${deletePet.id}`, {
       method: "DELETE",
       headers: {
         Accept: "application/json, text/plain, */*",
@@ -60,7 +60,7 @@ class App extends React.Component {
 
   handleUpdate = (event, formInputs) => {
     event.preventDefault();
-    fetch(`${BASE_URL}/pets/${formInputs.id}`, {
+    fetch(`${baseURL}/pets/${formInputs.id}`, {
       body: JSON.stringify(formInputs),
       method: "PUT",
       headers: {
