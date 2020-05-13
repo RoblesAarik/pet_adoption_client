@@ -25,3 +25,4 @@ An app where users can go to find pets up for adoption
 
 - Authentication
 - Only Users who put up a pet can update and delete
+- Search function
