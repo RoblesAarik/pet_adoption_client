@@ -5,7 +5,7 @@ import Main from "./components/Main";
 import Nav from "./components/Nav";
 import Modal from "./components/Modal";
 
-const BASE_URL = REACT_APP_BACKEND;
+const BASE_URL = process.env.REACT_APP_BACKEND;
 
 class App extends React.Component {
   state = {
