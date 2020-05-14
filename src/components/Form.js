@@ -40,15 +40,15 @@ class Form extends React.Component {
   componentWillMount() {
     if (this.props.notice) {
       this.setState({
-        animal: this.props.animal || "",
-        location: this.props.location || "",
-        breed: this.props.breed || "",
-        age: this.props.age || "",
-        phone: this.props.phone || "",
-        email: this.props.email || "",
-        gender: this.props.gender || "",
-        size: this.props.size || "",
-        pic: this.props.pic || "",
+        animal: this.props.animal,
+        location: this.props.location,
+        breed: this.props.breed,
+        age: this.props.age,
+        phone: this.props.phone,
+        email: this.props.email,
+        gender: this.props.gender,
+        size: this.props.size,
+        pic: this.props.pic,
       });
     }
   }
